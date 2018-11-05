@@ -32,8 +32,8 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.ssl.SSLContexts;
 import org.apache.http.util.EntityUtils;
 
-public class HttpClientUtils {
-  //private static Logger logger = LoggerFactory.getLogger(HttpClientUtils.class);
+public class HttpTools {
+  //private static Logger logger = LoggerFactory.getLogger(HttpTools.class);
 
   /**
    * 方法说明 http get 请求

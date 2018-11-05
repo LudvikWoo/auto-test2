@@ -5,11 +5,29 @@ import com.guoyasoft.autotest2.bean.login.LoginReq;
 import com.guoyasoft.autotest2.bean.login.LoginResp;
 import com.guoyasoft.autotest2.bean.signUp.SignUpReq;
 import com.guoyasoft.autotest2.bean.signUp.SignUpResp;
-import com.guoyasoft.autotest2.tools.HttpClientUtils;
+import com.guoyasoft.autotest2.tools.HttpTools;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
 import org.testng.Assert;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 
 public class CstusercontrollerTest {
+  public static Properties prop ;
+
+/*  @BeforeSuite
+  public void init(){
+    prop = new Properties();
+    try {
+      InputStream in = CstusercontrollerTest.class.getClassLoader().getResourceAsStream(
+          "env.properties");
+      prop.load(in);
+    } catch (IOException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
+  }*/
 
   @Test
   public void login(){
@@ -22,7 +40,14 @@ public class CstusercontrollerTest {
     System.out.println("---------------------请求报文-------------------------");
     System.out.println(reqJson);
 
-    String respJson=HttpClientUtils.doPostByJson("http://qa.guoyasoft.com:8080/user/login", reqJson, "UTF-8");
+    String protocol=prop.getProperty("protocol");
+    String ip=prop.getProperty("ip");
+    String port=prop.getProperty("port");
+
+    String url=protocol+"://"+ip+":"+port+"/user/login";
+    System.out.println("-----------url-------------");
+    System.out.println(url);
+    String respJson= HttpTools.doPostByJson(url, reqJson, "UTF-8");
     System.out.println("-----------------响应报文-----------------");
     System.out.println(respJson);
 
@@ -36,15 +61,20 @@ public class CstusercontrollerTest {
   public void signUp(){
     SignUpReq signUpReq=new SignUpReq();
     signUpReq.setPhone("18616765946");
-    signUpReq.setPwd("123456");
-    signUpReq.setRePwd("123456");
-    signUpReq.setUserName("wuling1105");
+    /*String pwd= CommonUtils.randomString("0123456789", 6);
+    System.out.println("随机密码："+pwd);
+    signUpReq.setPwd(pwd);
+    signUpReq.setRePwd(pwd);
+    String userName=CommonUtils.randomString("asdfqwertyuiokhzxcvb", 4)+CommonUtils.randomString("0123456789", 4);
+    *//*signUpReq.setUserName(userName);*/
 
     String reqJson=JSON.toJSONString(signUpReq);
     System.out.println("------------用户注册：请求报文----------");
     System.out.println(reqJson);
 
-    String result=HttpClientUtils.doPostByJson("http://qa.guoyasoft.com:8080/user/signup", reqJson, "UTF-8");
+
+    String result= HttpTools
+        .doPostByJson("http://qa.guoyasoft.com:8080/user/signup", reqJson, "UTF-8");
     System.out.println("----------用户注册：响应报文------------");
     System.out.println(result);
 
