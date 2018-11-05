@@ -1,6 +1,6 @@
-package com.guoyasoft.autotest2.bean;
+package com.guoyasoft.autotest2.bean.signUp;
 
-public class LoginResp {
+public class RespBase {
   private String respCode;
   private String respDesc;
 
@@ -22,7 +22,7 @@ public class LoginResp {
 
   @Override
   public String toString() {
-    return "LoginResp{" +
+    return "RespBase{" +
         "respCode='" + respCode + '\'' +
         ", respDesc='" + respDesc + '\'' +
         '}';

@@ -1,4 +1,4 @@
-package com.guoyasoft.autotest2.bean;
+package com.guoyasoft.autotest2.bean.login;
 
 public class LoginReq {
   private String pwd;

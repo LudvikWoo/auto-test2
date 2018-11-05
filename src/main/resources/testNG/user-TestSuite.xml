@@ -6,10 +6,11 @@
   <test name="用户模块" preserve-order="true">
     <classes>
       <!--自定义内容3：要执行的类-->
-      <class name="com.guoyasoft.autotest2.testCase.cstusercontrollerTest">
+      <class name="com.guoyasoft.autotest2.testCase.CstusercontrollerTest">
         <methods>
           <!--自定义内容4：要执行/排除的方法，以及执行顺序（从上到下）-->
           <include name="login"/>
+          <include name="signUp"></include>
         </methods>
       </class>
     </classes>
