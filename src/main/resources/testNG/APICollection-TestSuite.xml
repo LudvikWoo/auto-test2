@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<!--自定义内容1：套件名称-->
+<suite name="接口测试集合" verbose="1" preserve-order="true">
+
+  <suite-files>
+    <!--自定义内容2：要汇总的业务模块配置文件-->
+    <suite-file path="user-TestSuite.xml"/>
+  </suite-files>
+
+<!--  <listeners>
+    &lt;!&ndash;自定义内容3：报告美化的配置类路径&ndash;&gt;
+    <listener class-name="com.guoyasoft.autotest.java.config.ExtentTestNGIReporterListener"/>
+  </listeners>-->
+</suite>
